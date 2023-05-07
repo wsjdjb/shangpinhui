@@ -44,7 +44,7 @@
             type="text"
             id="autocomplete"
             class="input-error input-xxlarge"
-            v-model="keywords"
+            v-model="keyword"
           />
           <button
             class="sui-btn btn-xlarge btn-danger"
@@ -64,7 +64,7 @@ export default {
   name: "",
   data() {
     return {
-      keywords: "",
+      keyword: "",
     };
   },
   methods: {
@@ -73,16 +73,29 @@ export default {
         name: "search",
         query:{},
         params: {
-          keywords: this.keywords || undefined,
+          keyword: this.keyword || undefined,
         },
       };
       if (this.$route.query) {
         Object.assign(location.query,this.$route.query)
 
       }
-      this.$router.push(location);
+      // if(this.$route.params.keyword){
+      //   //点击重新跳转
+      //   this.$route.params.keyword =  location.params.keyword
+      //   // this.$router.go(1)
+      // }
+      //??vue开发者工具对$route的监视是不灵敏的？？？
+       this.$router.push(location);
+      // this.keyword = undefined
+
     },
   },
+  mounted(){
+    this.$bus.$on("removeKey",()=>{
+      this.keyword = ""
+    })
+  }
 };
 </script>
 <style lang="less" scoped>

@@ -17,7 +17,7 @@
                         <div class="floor-1">
                             <div class="blockgary">
                                 <ul class="jd-list">
-                                    <li v-for="(key,index) in floorKid.keywords" :key="index">{{key}}</li>
+                                    <li v-for="(key,index) in floorKid.keyword" :key="index">{{key}}</li>
                                     <!-- <li>4K电视</li>
                                     <li>空气净化器</li>
                                     <li>IH电饭煲</li>

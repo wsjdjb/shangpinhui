@@ -54,26 +54,7 @@
         <div class="details clearfix">
           <div class="sui-navbar">
             <div class="navbar-inner filter">
-              <ul class="sui-nav">
-                <li class="active">
-                  <a href="#">综合</a>
-                </li>
-                <li>
-                  <a href="#">销量</a>
-                </li>
-                <li>
-                  <a href="#">新品</a>
-                </li>
-                <li>
-                  <a href="#">评价</a>
-                </li>
-                <li>
-                  <a href="#">价格⬆</a>
-                </li>
-                <li>
-                  <a href="#">价格⬇</a>
-                </li>
-              </ul>
+                <Order :order="searchParams.order" @getOrder="getOrder"></Order>
             </div>
           </div>
           <div class="goods-list">
@@ -141,6 +122,7 @@ import { mapGetters } from "vuex";
 import Selector from "./Selector";
 import Pagination from "./Pagination";
 import Bread from "./Bread";
+import Order from  "./Order"
 export default {
   name: "",
   data() {
@@ -153,7 +135,7 @@ export default {
         keyword: "",
         props: [],
         trademark: "",
-        order: "",
+        order: "1:desc",
         pageNo: 1,
         pageSize: 10,
       },
@@ -163,6 +145,7 @@ export default {
     Selector,
     Pagination,
     Bread,
+    Order
   },
   methods: {
     getData() {
@@ -271,6 +254,10 @@ export default {
       this.searchParams.trademark = Tarde;
       this.getData();
     },
+    getOrder(value){
+        this.searchParams.order = value
+        this.getData()
+    }
   },
   beforeMount() {
     if (this.$route.params) {
@@ -787,30 +774,7 @@ export default {
             padding-left: 0;
             border-radius: 0;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-            .sui-nav {
-              position: relative;
-              left: 0;
-              display: block;
-              float: left;
-              margin: 0 10px 0 0;
-              li {
-                float: left;
-                line-height: 18px;
-                a {
-                  display: block;
-                  cursor: pointer;
-                  padding: 11px 15px;
-                  color: #777;
-                  text-decoration: none;
-                }
-                &.active {
-                  a {
-                    background: #e1251b;
-                    color: #fff;
-                  }
-                }
-              }
-            }
+
           }
         }
         .goods-list {

@@ -11,12 +11,14 @@
                         <!-- parmas-keyword标签 -->
                         <!--categoryName  -->
                     <el-tag  size="mini" type="info"  effect="dark" closable v-if="$route.query.categoryName" @close="closeBread1">{{$route.query.categoryName}}</el-tag>  
-                   <!-- keyword -->
+                                          <!-- keyword -->
                     <el-tag size="mini" type="info"  effect="dark" closable v-if="$route.params.keyword" @close="closeBread2">{{$route.params.keyword}}</el-tag>  
+
+                        <!-- trade-->
+                    <el-tag size="mini" type="info"  effect="dark" closable v-if="searchParams.trademark"  @close="closeBread4" >{{searchParams.trademark.split(":")[1]}}</el-tag>  
+
                     <!-- props 因为是数组所以判断长度以及循环-->
                     <el-tag size="mini" type="info"  effect="dark" closable v-if="searchParams.props.length" v-for="(prop,index) in searchParams.props" :key="index" @close="closeBread3(index)">{{prop.split(":")[1]}}</el-tag>  
-                    <!-- trade-->
-                    <el-tag size="mini" type="info"  effect="dark" closable v-if="searchParams.trademark"  @close="closeBread4" >{{searchParams.trademark.split(":")[1]}}</el-tag>  
 
                     </ul>
 

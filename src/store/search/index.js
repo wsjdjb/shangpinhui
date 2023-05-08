@@ -1,5 +1,5 @@
 import { reqGetSearchList } from "@/api"
-import Vue from "vue"
+
 const state = {
     searchList:{}
 }
@@ -9,7 +9,7 @@ const actions = {
 
         if(result.code==200){
             commit("GETSEARCHLIST",result.data)
-            // console.log(result.data)
+
             
         }
     }
@@ -17,7 +17,7 @@ const actions = {
 const mutations = {
     GETSEARCHLIST(state,searchList){
         state.searchList = searchList
-        // Vue.set(state,'searchList',searchList)
+
     }
 }
 const getters ={

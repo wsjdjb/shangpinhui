@@ -1,11 +1,8 @@
 
-import Home from "@/pages/Home"
-import Search from "@/pages/Search"
-import Login from "@/pages/Login"
-import Regiseter from "@/pages/Register"
-import NotFound from "@/pages/NotFound"
+
 import Vue from "vue"
 import VueRouter from "vue-router"
+import routes from "./routes"
 
 Vue.use(VueRouter)
 
@@ -32,32 +29,6 @@ VueRouter.prototype.push = function (location, resolve, reject) {
 
 const router =  new VueRouter({
     // mode:replace,
-    routes:[
-        {path:`/home`,
-        component:Home
-    },
-        {name:`search`,
-        path:`/search/:keyword?`,
-        component:Search
-    },
-        {path:`/login`,
-        component:Login,
-        meta:{notShow:true}
-    },
-        {path:`/register`,       
-        component:Regiseter,
-        meta:{notShow:true}
-    },
-        {
-            path:`/`,
-            redirect:`/home`
-        },
-        
-    {
-      path: '*',
-      name: 'NotFound',
-      component: NotFound
-    }
-    ]
+    routes:routes
 })
 export default router;

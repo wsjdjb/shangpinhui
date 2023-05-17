@@ -62,13 +62,18 @@
               <li
                 class="yui3-u-1-5"
                 v-for="(good, index) in goodsList"
-                :key="good.id"
+                :key="good.id" 
               >
                 <div class="list-wrap">
                   <div class="p-img">
-                    <a href="item.html" target="_blank"
+                    <!-- <a href="item.html" target="_blank"
                       ><img :src="good.defaultImg"
-                    /></a>
+                    /></a> -->
+                    <!-- 声明式导航编写 -->
+                    <router-link :to="{name:'detail',params:{skuId:good.id},}">
+                      <img :src="good.defaultImg"
+                    />
+                    </router-link>
                   </div>
                   <div class="price">
                     <strong>

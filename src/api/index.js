@@ -10,3 +10,7 @@ export const  reqGetFloorList= ()=>mockRequests({url:"/floor",method:"get"})
 // 形参名不能乱写，必须依照接口规范--data:data简写为data
 
 export const reqGetSearchList = (data)=>requests({url:'/list',method:'post',data})
+
+
+export const reqGetGoodDetail = (skuId)=>requests({url:`/item/${skuId}`,method:'get'})
+

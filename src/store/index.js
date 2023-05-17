@@ -4,12 +4,14 @@ import banner from "./banner"
 import home from "./home"
 import floor from "./floor"
 import search from "./search"
+import detail from "./detail"
 Vue.use(Vuex)
 export default new Vuex.Store({
     modules:{
         home,
         banner,
         floor,
-        search
+        search,
+        detail
     }
 })

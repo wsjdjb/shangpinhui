@@ -29,6 +29,10 @@ VueRouter.prototype.push = function (location, resolve, reject) {
 
 const router =  new VueRouter({
     // mode:replace,
-    routes:routes
+    routes:routes,
+    scrollBehavior: function (to, from, savedPosition) {
+        return savedPosition || { x: 0, y: 0 }
+      }
+    
 })
 export default router;

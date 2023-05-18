@@ -9,7 +9,7 @@ let actions = {
     async getGoodDetail({commit},skuId){
         
         let result = await reqGetGoodDetail(skuId)
-        console.log(result.data)
+        // console.log(result.data)
         if(result.code){
             commit("GETGOODDETAIL",result.data)
         }

@@ -5,6 +5,7 @@ import home from "./home"
 import floor from "./floor"
 import search from "./search"
 import detail from "./detail"
+import shopcar from "./shopcar"
 Vue.use(Vuex)
 export default new Vuex.Store({
     modules:{
@@ -12,6 +13,7 @@ export default new Vuex.Store({
         banner,
         floor,
         search,
-        detail
+        detail,
+        shopcar
     }
 })

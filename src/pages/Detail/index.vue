@@ -80,7 +80,7 @@
                 <a  class="mins" @click="changeNum(`mins`,1)">-</a>
               </div>
               <div class="add">
-                <a href="javascript:">加入购物车</a>
+                <a @click="addShopCar">加入购物车</a>
               </div>
             </div>
           </div>
@@ -339,7 +339,8 @@
     name: 'Detail',
     data(){
       return {
-        num:1
+        num:1,
+        attr:[]
       }
     },
     components: {
@@ -360,7 +361,7 @@
           // console(attr)
         });
         attr[index].isChecked = 1
-
+        this.attr.push(attr)
       },
       changeNum(method,num){
 
@@ -377,12 +378,40 @@
             }
             break;
           case "change":
+            //手动输入与要求-大于一的正整有理数-
             if(isNaN(num)||num<1){
           this.num = 1
+        }else{
+                  this.skuNum = parseInt(value);
         }
+
         }
 
           
+
+      },
+      async addShopCar(){
+
+
+
+        try{
+          await this.$store.dispatch("addShopCar",{skuId:this.skuInfo.id,skuNum:this.num}) 
+        let addCarSession = JSON.stringify(this.attr)
+        let addCarSession1 = JSON.stringify(this.skuInfo)
+
+        sessionStorage.setItem("ATTR",addCarSession)
+        sessionStorage.setItem("info",addCarSession1)
+          this.$router.push({
+            name:"addcartsuccess",
+            params:{
+              num:this.num
+            }
+          })
+        }catch(error){
+          alert("error")
+
+        }
+        
 
       }
     }

@@ -1,6 +1,8 @@
 import axios from "axios"
 import "nprogress/nprogress.css"
 import nprogress from "nprogress"
+import store from "@/store"
+
 
 const requests =  axios.create({
 	baseURL:"/api",
@@ -11,7 +13,11 @@ const requests =  axios.create({
 
 
 requests.interceptors.request.use((config)=>{
+ 
     nprogress.start()
+    if(store.state.shopcar.token){
+        config.headers.userTempId = store.state.shopcar.token
+    }
 	return config
 })
 
@@ -20,6 +26,8 @@ requests.interceptors.request.use((config)=>{
 requests.interceptors.response.use((res) => {
     //res:实质就是项目中发请求、服务器返回的数据
     //进度条结束
+
+
     nprogress.done();
     return res.data;
 }, (err) => {

@@ -14,3 +14,22 @@ export const reqGetSearchList = (data)=>requests({url:'/list',method:'post',data
 
 export const reqGetGoodDetail = (skuId)=>requests({url:`/item/${skuId}`,method:'get'})
 
+
+//加入购物车成功
+export const reqShopCarCode = (skuId,skuNum)=>requests({url:`/cart/addToCart/${skuId}/${skuNum}`,method:'post'})
+
+
+//请求购物车数据
+export const reqGetShopCarList = ()=>requests({url:`/cart/cartList`,method:'get'})
+
+
+//购物车选中--/api/cart/checkCart/{skuID}/{isChecked}
+
+export const reqChangeChecked = (skuId,isChecked)=>requests({url:`/cart/checkCart/${skuId}/${isChecked}`,method:'get'})
+
+
+//购物车删除--/api/cart/deleteCart/{skuId}
+
+// export const reqDeleteCart = (skuId)=>requests({url:`/cart/deleteCart/${skuId}`,method:'DELETE'})
+
+export const reqDeleteCart = (skuId)=>requests({url:`/cart/deleteCart/${skuId}`,method:'delete'});
